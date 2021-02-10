@@ -9,7 +9,7 @@ to statically serve and protect an angular frontend example page.
 ## Dependencies
 To run this project, you need to run the `Authorization Server` on port 8080 defined in the properties file `application.yaml`.
 
-You will also need an authorized client on the server DB; the following INSERT will create the credentials needed:
+You will also need an authorized client (to authorize the application, not the user) on the server DB; the following INSERT will create the credentials needed:
 ```
 INSERT INTO AUTH_SERVICE.client (clientId, authorizedGrantTypes, autoApproveScopes, redirectUri, scopes, secret) VALUES ('springBootAngular', 'authorization_code', '', 'http://localhost:8081/login', 'read,write', '$2a$10$jbIi/RIYNm5xAW9M7IaE5.WPw6BZgD8wcpkZUg0jm8RHPtdfDcMgm');
 ```
@@ -33,3 +33,7 @@ The command will build front end and store it inside `src/main/resources/static`
 
 Angular front end will be available to access under http://localhost:8081/ and will automatically redirect you to
 the login page on the authorization server.
+
+You can use the `user` credentials of the DB to fill in the form; the authorization server has a script to insert 2 users:
+* Usernames: admin@mail.com, audit@mail.com
+* Password: password
