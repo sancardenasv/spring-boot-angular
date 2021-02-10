@@ -39,4 +39,5 @@ mvnw.cmd
 
 ### Front end generated static resources ###
 src/main/resources/static
-
+front/node
+front/node_modules
