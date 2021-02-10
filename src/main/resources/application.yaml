@@ -1,0 +1,31 @@
+server:
+  port: 8081
+  servlet:
+    session:
+      cookie:
+        name: UISESSION
+security:
+  basic:
+    enabled: false
+  oauth2:
+    authServer: http://localhost:8080
+    client:
+      client-id: springBootAngular
+      client-secret: password
+      grant-type: password
+      access-token-uri: ${security.oauth2.authServer}/oauth/token
+      user-authorization-uri: ${security.oauth2.authServer}/oauth/authorize
+      revoke-token: ${security.oauth2.authServer}/token/revoke
+      logout: ${security.oauth2.authServer}/logout
+    resource:
+      user-info-uri: ${security.oauth2.authServer}/user
+      jwt:
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjY8Z1hTe41hcRiPppa9RkSlqcQE2fT/N3MPJePMIXmMfbNtO0QEO26Ax5KjSQ5hgebrYcVUppgxTFaDr9mZaH27PF6vPdw9yDgQ/FKYYOvUwI32Cc205u2Xnz6tfrijGtZt341I+QA13+nKzYldKZL4kjm6vjAQX+Kx7X2/bKp6f+IXLI8GMPTb1ccZHuLnN/5py4cyndSB8vDB0pmFNYNNPn9o1YGwn2f8BZBOS7doghSESGsjXIg8Tqa23QuqB+64laCR6mbNmClIHQhYvBo14aB8iTEEksw6RciX/PS8KTFgIx0sGZZuVVjGOJVzwWreApzW4F1AmgV04+dSNvQIDAQAB
+          -----END PUBLIC KEY-----
+
+logging:
+  config: /config/logback-spring.xml
+  level:
+    org.springframework.security: INFO
